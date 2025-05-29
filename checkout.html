@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Оформление заказа — Avenue</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f8f4f0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 60px auto;
+      background-color: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      color: #7b3f00;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 8px;
+      font-size: 16px;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      margin-top: 30px;
+      background-color: #7b3f00;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #5a2d0c;
+      transform: scale(1.03);
+    }
+
+    .home-button {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 24px;
+      background-color: #ccc;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .home-button:hover {
+      background-color: #bbb;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #999;
+      font-size: 14px;
+    }
+
+    /* Модальное окно */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .modal-content h2 {
+      color: #7b3f00;
+      margin-bottom: 20px;
+    }
+
+    .modal-content button {
+      background-color: #7b3f00;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #5a2d0c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Оформление заказа</h1>
+    <form id="order-form">
+      <label for="name">Имя</label>
+      <input type="text" id="name" required>
+
+      <label for="phone">Телефон</label>
+      <input type="tel" id="phone" required>
+
+      <label for="email">Ваша электронная почта</label>
+      <input type="email" id="email" required>
+
+      <label for="payment">Способ оплаты</label>
+      <select id="payment" required>
+        <option value="">Выберите</option>
+        <option value="card">Банковская карта</option>
+        <option value="cash">Наличными при получении</option>
+      </select>
+
+      <button type="submit" class="button">Подтвердить заказ</button>
+    </form>
+
+    <a href="index.html" class="home-button">На главную страницу</a>
+  </div>
+
+  <!-- Модальное окно -->
+  <div class="modal" id="successModal">
+    <div class="modal-content">
+      <h2>Вы успешно оформили заказ, ожидайте!</h2>
+      <button onclick="window.location.href='index.html'">Ок</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Avenue — Все права защищены
+  </footer>
+
+  <script>
+    const form = document.getElementById('order-form');
+    const modal = document.getElementById('successModal');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      modal.style.display = 'flex';
+    });
+  </script>
+</body>
+</html>
